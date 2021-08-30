@@ -1,0 +1,9 @@
+
+<% if current_user.admin? %>
+    <%= link_to "Enter ADMIN access", rails_admin_path %>
+
+<% else %>
+
+    <%= 'Sell Stocks' %>
+    <%= 'Buy Stocks' %>  
+<% end %>
