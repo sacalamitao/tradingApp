@@ -2,6 +2,16 @@
 <% if current_user.admin? %>
     <%= link_to "Enter ADMIN access", rails_admin_path %>
 
+<table>
+  <% @needs_approval.each do |user| %>
+    <tr>
+      <td><%= user.email %>
+      <td><%= user.approved %>
+      <td><%= link_to "Edit Approval", rails_admin.edit_path(model_name: 'User', id: user.id) %>
+    </tr>
+  <% end %>
+</table>
+
 <% else %>
 
     <%= 'Sell Stocks' %>
