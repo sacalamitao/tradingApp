@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @stock.company %>
+</p>
+
+<p>
+  <strong>Ticker:</strong>
+  <%= @stock.ticker %>
+</p>
+
+<p>
+  <strong>Current price:</strong>
+  <%= @stock.current_price %>
+</p>
+
+<p>
+  <strong>Market cap:</strong>
+  <%= @stock.market_cap %>
+</p>
+
+<%= link_to 'Edit', edit_stock_path(@stock) %> |
+<%= link_to 'Back', stocks_path %>

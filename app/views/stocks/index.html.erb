@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Stocks</h1>
+
+
+
+<%= form_tag root_path, :method => 'POST' do %>
+    <%= text_field_tag 'ticker', nil, placeholder: "Enter Stock Symbol", size: 50 %>
+    <%= submit_tag 'Search' %>
+<% end %>
+
+<br/> 
+
+<%# error handling %>
+<%# to display if @stock instance has value %>
+<% if @stock %>
+    <%= @stock.company_name %><br/>
+    $<%= @stock.symbol %><br/> 
+    $<%= @stock.latest_price %><br/> 
+    $<%= @stock.market_cap %><br/> 
+<% elsif @empty_error_msg %>
+    <%= @empty_error_msg %>
+<% end %>
+<%# to display if @stock instance has junk or gibberish value %>
+<% if @junk_error_msg %>
+    <%= @junk_error_msg %>
+<% end %>
+
+
+
+
+
+<%= link_to 'New Stock', new_stock_path %>

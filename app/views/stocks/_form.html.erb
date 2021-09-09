@@ -1,0 +1,37 @@
+<%= form_with(model: stock) do |form| %>
+  <% if stock.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(stock.errors.count, "error") %> prohibited this stock from being saved:</h2>
+
+      <ul>
+        <% stock.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :company_name %>
+    <%= form.select :company_name, options_for_select(@company_name) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ticker %>
+    <%= form.text_field :ticker %>
+  </div>
+
+  <div class="field">
+    <%= form.label :current_price %>
+    <%= form.number_field :current_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :market_cap %>
+    <%= form.number_field :market_cap %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
