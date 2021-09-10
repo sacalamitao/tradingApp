@@ -8,5 +8,20 @@ class HomeController < ApplicationController
       end
     end
     @needs_approval = User.where(approved: false)
+    @stocks = Stock.all
   end
+
+  def show
+
+  end
+
+  def destroy
+    @stock.destroy
+    respond_to do |format|
+      format.html { redirect_to stocks_url, notice: "Stock was successfully destroyed." }
+      format.json { head :no_content }
+    end
+  end
+
+
 end

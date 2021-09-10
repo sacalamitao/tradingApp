@@ -12,26 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :company_name %>
-    <%= form.select :company_name, options_for_select(@company_name) %>
-  </div>
-
-  <div class="field">
     <%= form.label :ticker %>
-    <%= form.text_field :ticker %>
+    <%= form.text_field :ticker, id: :stock_ticker %>
   </div>
 
-  <div class="field">
-    <%= form.label :current_price %>
-    <%= form.number_field :current_price %>
-  </div>
 
   <div class="field">
-    <%= form.label :market_cap %>
-    <%= form.number_field :market_cap %>
+    <%= form.number_field :user_id, id: :stock_user_id, value: current_user.id, type: :hidden %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "BUY" %>
   </div>
 <% end %>

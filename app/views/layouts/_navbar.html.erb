@@ -1,6 +1,6 @@
   <% if current_user %>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" ><%= link_to "HOME", root_path %></a>
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <form class="form-inline my-2 my-lg-0 float-left">
           <div class="btn btn-outline-success my-2 my-sm-0" type="submit">
@@ -16,7 +16,7 @@
     </nav>
   <% else %>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand"><%= link_to "HOME", root_path %></a>
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <form class="form-inline my-2 my-lg-0 float-right">
           <div class="btn btn-outline-success my-2 my-sm-0" type="submit">

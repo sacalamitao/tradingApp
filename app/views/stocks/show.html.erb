@@ -1,24 +1,23 @@
-<p id="notice"><%= notice %></p>
+<% @api = StockQuote::Stock.new(api_key: 'pk_50b7099e20a147dbaaea15e037a2e9f1') %>
 
-<p>
-  <strong>Company:</strong>
-  <%= @stock.company %>
-</p>
 
-<p>
-  <strong>Ticker:</strong>
-  <%= @stock.ticker %>
-</p>
+<table>
+<% begin %>
+    <% @ticker = StockQuote::Stock.quote(@stock.ticker) %>
+    <% @logo = StockQuote::Stock.logo(@stock.ticker)%>
+    <img src="<%= @logo.url %>"><br/><br/>
+    <h2><%= @ticker.company_name %></h2><br/>
+    Ticker Symbol: <%= @ticker.symbol %><br/>
+    Current Price: $<%= number_with_precision(@ticker.latest_price, :precision => 2, :delimiter => ',') %><br/>
+    Previous Close: $<%= number_with_precision(@ticker.previous_close, :precision => 2, :delimiter => ',') %><br/>
+    Percent Change: <%= @ticker.change_percent %>%<br/>
+    YTD Change: <%= number_with_precision(@ticker.ytd_change, :precision => 2, :delimiter => ',') %>%<br/>
+    Market Cap: $<%= number_with_precision(@ticker.market_cap, :precision => 2, :delimiter => ',') %><br/>
+<% rescue StandardError %>
+    The ticker: <%= @stock.ticker %> does not exist!<br/>
+<% end %>
+</table>
 
-<p>
-  <strong>Current price:</strong>
-  <%= @stock.current_price %>
-</p>
-
-<p>
-  <strong>Market cap:</strong>
-  <%= @stock.market_cap %>
-</p>
 
 <%= link_to 'Edit', edit_stock_path(@stock) %> |
 <%= link_to 'Back', stocks_path %>

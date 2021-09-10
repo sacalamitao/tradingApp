@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+
+ .text_format h2 {
+     color: whitesmoke;
+ }
