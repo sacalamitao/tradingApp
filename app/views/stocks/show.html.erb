@@ -5,19 +5,25 @@
 <% begin %>
     <% @ticker = StockQuote::Stock.quote(@stock.ticker) %>
     <% @logo = StockQuote::Stock.logo(@stock.ticker)%>
-    <img src="<%= @logo.url %>"><br/><br/>
-    <h2><%= @ticker.company_name %></h2><br/>
-    Ticker Symbol: <%= @ticker.symbol %><br/>
-    Current Price: $<%= number_with_precision(@ticker.latest_price, :precision => 2, :delimiter => ',') %><br/>
-    Previous Close: $<%= number_with_precision(@ticker.previous_close, :precision => 2, :delimiter => ',') %><br/>
-    Percent Change: <%= @ticker.change_percent %>%<br/>
-    YTD Change: <%= number_with_precision(@ticker.ytd_change, :precision => 2, :delimiter => ',') %>%<br/>
-    Market Cap: $<%= number_with_precision(@ticker.market_cap, :precision => 2, :delimiter => ',') %><br/>
+    <div class="text-center">
+        <img src="<%= @logo.url %>" class="rounded" alt="...">
+    </div><br/><br/>
+    
+    <div class="border border-white bg-secondary w-50 mx-auto rounded-top">
+    <h2 class="row justify-content-center text-white"><%= @ticker.company_name %></h2><br/>
+    <p class="text-center text-white">Ticker Symbol: <%= @ticker.symbol %></p>
+    <p class="text-center text-white">Current Price: $<%= number_with_precision(@ticker.latest_price, :precision => 2, :delimiter => ',') %></p>
+    <p class="text-center text-white">Previous Close: $<%= number_with_precision(@ticker.previous_close, :precision => 2, :delimiter => ',') %></p>
+    <p class="text-center text-white">Percent Change: <%= @ticker.change_percent %>%</p>
+    <p class="text-center text-white">YTD Change: <%= number_with_precision(@ticker.ytd_change, :precision => 2, :delimiter => ',') %>%</p>
+    <p class="text-center text-white">Market Cap: $<%= number_with_precision(@ticker.market_cap, :precision => 2, :delimiter => ',') %></p>
+    </div>
 <% rescue StandardError %>
     The ticker: <%= @stock.ticker %> does not exist!<br/>
 <% end %>
 </table>
 
-
-<%= link_to 'Edit', edit_stock_path(@stock) %> |
-<%= link_to 'Back', stocks_path %>
+<div class="border border-white bg-secondary w-50 mx-auto rounded-bottom">
+<p class="text-center"><%= link_to 'Edit', edit_stock_path(@stock), class: "text-white"%> |
+<%= link_to 'Back', stocks_path, class: "text-white" %></p>
+</div>

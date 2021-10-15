@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :stocks, dependent: :destroy
+  has_many :transactions, dependent: :destroy
 
 
   before_save :default
